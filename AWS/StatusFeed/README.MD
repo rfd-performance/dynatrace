@@ -11,7 +11,7 @@ Runtime Requirements
 1. Python v3
 2. Python packages requests and feedparser installed
 3. Some kind of job scheduler to run the script on a periodic basis (i.e. cron on Linux or Task Scheduler on Windows)
-4. The addition of a tag with a key of "OKTA_STATUS" attached. This should be for any application that is potentially impacted by an AWS service disruption.
+4. The addition of a tag with a key of "AWS_STATUS" attached. This should be for any application that is potentially impacted by an AWS service disruption.
 
 Operation:
 
@@ -21,8 +21,11 @@ Operation:
   
     python3 ./statusFeed.py RFD LAB ./env.ini
   
-  Example cron job to run it every 5 minutes:
+Identifying AWS Services - The list of services that AWS provides is immense.  A txt file is provided (aws-services-rss-feeds.txt) that at least at this writing was a pretty comprehensive list of US based RSS feeds.  But if something is not there it can be added, the list of available RSS feeds was parsed from the contents of the AWS Status page (https://status.aws.amazon.com/)
   
-    */5 * * * * nice python3 ~/awsStatusFeed.py --customer RFD --environment PRD --iniFile ~/env.ini > ~/aws_status_rfd_prd.sysout 2>&1
+A regularly occuring job as mentioned should be setup to execute at no more than a 10 minute interval based on the python code as it is now.  It's fine to run it more frequently but the timeout period for the alert in Dynatrace will take 10 minutes at least to clear once the status of the event changes. 
+  
+  Example cron job to run it every 5 minutes:
 
-A regularly occuring job as mentioned should be setup to execute at no more than a 10 minute interval based on the python code as it is now.  It's fine to run it more frequently but the timeout period for the alert in Dynatrace will take 10 minutes at least to clear. 
+  */5 * * * * nice python3 ~/awsStatusFeed.py --customer RFD --environment PRD --iniFile ~/env.ini > ~/aws_status_rfd_prd.sysout 2>&1
+
