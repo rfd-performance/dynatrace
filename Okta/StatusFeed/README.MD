@@ -17,6 +17,12 @@ Operation:
 
   python3 ./statusFeed.py --customer <customer> --environment <environment> --iniFile </path/to/ini_file>
   
-  Example: python3 ./statusFeed.py --customer RFD --environment LAB --iniFile ./env.ini
+  Example: python3 ~/statusFeed.py --customer RFD --environment LAB --iniFile ~/env.ini
   
 The problem alarm is set to timeout after 10 minutes.  So, you will want to run on a cycle that is 10 minutes or less.  
+
+A regularly occuring job as mentioned should be setup to execute at no more than a 10 minute interval based on the python code as it is now. It's fine to run it more frequently but the timeout period for the alert in Dynatrace will take 10 minutes at least to clear once the status of the event changes.
+
+Example cron job to run it every 5 minutes:
+
+*/5 * * * * nice python3 ~/statusFeed.py --customer RFD --environment PRD --iniFile ~/env.ini > ~/okta_status_rfd_prd.sysout 2>&1
