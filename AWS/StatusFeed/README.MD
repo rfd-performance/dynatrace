@@ -8,10 +8,11 @@ This RSS feed is used by AWS to publish service degradations and disruptions. Wh
 
 Runtime Requirements
 
-1. Python v3
-2. Python packages requests and feedparser installed
-3. Some kind of job scheduler to run the script on a periodic basis (i.e. cron on Linux or Task Scheduler on Windows)
-4. The addition of a tag with a key of "AWS_STATUS" attached. This should be for any application that is potentially impacted by an AWS service disruption.
+1. Download all of the files (.txt/.ini/.py)
+2. Python v3
+3. Python packages "requests" and "feedparser" installed
+4. Some kind of job scheduler to run the script on a periodic basis (i.e. cron on Linux or Task Scheduler on Windows)
+5. The addition of a tag with a key of "AWS_STATUS" attached to an Application entity in Dynatrace. This should be for any application that is potentially impacted by an AWS service disruption.
 
 Operation:
 
@@ -19,7 +20,7 @@ Operation:
 
   Example one time run: 
   
-    python3 ./statusFeed.py --customer RFD --environment LAB --iniFile ~/env.ini
+    python3 ./awsStatusFeed.py --customer RFD --environment LAB --iniFile ~/env.ini
   
 Identifying AWS Services - The list of services that AWS provides is immense.  A txt file is provided (aws-services-rss-feeds.txt) that at least at this writing was a pretty comprehensive list of US based RSS feeds.  But if something is not there it can be added, the list of available RSS feeds was parsed from the contents of the AWS Status page (https://status.aws.amazon.com/)
   
@@ -28,4 +29,3 @@ A regularly occuring job as mentioned should be setup to execute at no more than
   Example cron job to run it every 5 minutes:
 
   */5 * * * * nice python3 ~/awsStatusFeed.py --customer RFD --environment PRD --iniFile ~/env.ini > ~/aws_status_rfd_prd.sysout 2>&1
-
