@@ -16,7 +16,7 @@ Operation:
 
   python3 ./statusFeed.py <customer> <environment> </path/to/ini_file>
   
-  Example: ./statusFeed.py RFD LAB ./env.ini
+  Example: python3 ./statusFeed.py RFD LAB ./env.ini
   
 The problem alarm is set to timeout after 10 minutes.  So, you will want to run on a cycle that is 10 minutes or less.  I run it for our purposes every 8 minutes just to have a refresh and renewal of the problem card if the issues is still open...a little early...
   
