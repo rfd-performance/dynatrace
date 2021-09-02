@@ -1,0 +1,1 @@
+# This is an extension that will call the Okta Trust Status RSS Feed.
