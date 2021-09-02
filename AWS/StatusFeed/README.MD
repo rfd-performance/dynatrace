@@ -4,7 +4,7 @@ This extension is meant to be run to collect currently published status of AWS s
 
 https://status.aws.amazon.com/
 
-This RSS feed is used by AWS to publish service degradations and disruptions. When a new publication is discovered a problem alert will be opened in Dynatrace with the supporting details to both the RSS feed and the detailed status on the Okta site.
+This RSS feed is used by AWS to publish service degradations and disruptions. When a new publication is discovered a problem alert will be opened in Dynatrace with the supporting details to both the RSS feed and the detailed status on the AWS Status site.
 
 Runtime Requirements
 
