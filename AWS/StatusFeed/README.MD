@@ -8,7 +8,7 @@ This RSS feed is used by AWS to publish service degradations and disruptions. Wh
 
 Runtime Requirements
 
-1. Download all of the files (.txt/.ini/.py)
+1. Download all of the files (.txt/.ini/.py), the examples below assume you downloaded and are running from your home "~" directory.
 2. Python v3
 3. Python packages "requests" and "feedparser" installed
 4. Some kind of job scheduler to run the script on a periodic basis (i.e. cron on Linux or Task Scheduler on Windows)
