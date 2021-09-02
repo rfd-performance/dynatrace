@@ -15,11 +15,11 @@ Runtime Requirements
 
 Operation:
 
-  python3 ./awsStatusFeed.py --customer <customer> --environment <environment> --iniFile </path/to/ini_file>
+  python3 ~/awsStatusFeed.py --customer <customer> --environment <environment> --iniFile </path/to/ini_file>
 
   Example one time run: 
   
-    python3 ./statusFeed.py RFD LAB ./env.ini
+    python3 ./statusFeed.py --customer RFD --environment LAB --iniFile ~/env.ini
   
 Identifying AWS Services - The list of services that AWS provides is immense.  A txt file is provided (aws-services-rss-feeds.txt) that at least at this writing was a pretty comprehensive list of US based RSS feeds.  But if something is not there it can be added, the list of available RSS feeds was parsed from the contents of the AWS Status page (https://status.aws.amazon.com/)
   
