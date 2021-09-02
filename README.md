@@ -1,4 +1,4 @@
-# Dynatrace Scripts
+# Dynatrace Automation and Extension Scripts
 ### This is a repository of scripts that can help you with the operation of Dynatrace.  They are split between Linux and Windows. They are provided as-is with no warranty.  We (RFD www.rfdinc.com) can assist you with modification or creation of additional integration pieces with Dynatrace.
 
 ***Linux***
