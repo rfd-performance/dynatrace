@@ -16,7 +16,7 @@ Runtime Requirements
 
 Operation:
 
-  python3 ~/awsStatusFeed.py --customer <customer> --environment <environment> --iniFile </path/to/ini_file>
+  python3 ~/awsStatusFeed.py --customer \<customer\> --environment \<environment\> --iniFile </path/to/ini_file>
 
   Example one time run: 
   
