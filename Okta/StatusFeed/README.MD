@@ -11,7 +11,7 @@ Requirements
 2. Python v3
 3. Python packages requests and feedparser installed
 4. Some kind of job scheduler to run the script on a periodic basis (i.e. cron on Linux or Task Scheduler on Windows)
-5. The addition of a tag with a key of "OKTA_STATUS" attached.  This should be for any application that is potentially impacted by an Okta service outage.
+5. The addition of a tag with a key of "OKTA_STATUS" attached to the application that will be impacted if Okta is unavailable or having issues.
 
 Operation:
 
