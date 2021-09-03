@@ -42,5 +42,5 @@ if ((Test-Path -LiteralPath $args[0])) {
 	}
 }
 else {
-	Write-Host 'Directory '+$args[0]+' does not exist...exiting'
+	Write-Host "Directory "$args[0]" does not exist...exiting"
 }
