@@ -10,7 +10,7 @@ Runtime Requirements
 
 1. Download all of the files (.ini/.py), the examples below assume you downloaded and are running from your home "~" directory.
 2. Python v3
-3. Python packages "requests" and "feedparser" installed
+3. Python package "requests" installed
 4. Some kind of job scheduler to run the script on a periodic basis (i.e. cron on Linux or Task Scheduler on Windows)
 
 Operation:
