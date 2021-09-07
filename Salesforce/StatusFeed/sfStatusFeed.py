@@ -62,8 +62,22 @@ def getEntityIds() :
 def createCustomDevice() :
     print("Creating Salesforce Custom Device in Dynatrace: " + str(args.customer) + "/" + str(args.environment) + " at "+ str(datetime.datetime.now()))
     global entityId
+
+    # Build json payload for custom device
+    payload = {}
+    payload['customDeviceId'] = "SALESFORCE_SERVICES"
+    payload['displayName'] = "Salesforce"
+    payload['group'] = "SalesforceGroup"
+    payload['ipAddresses'] = [ "44.229.53.192", "52.40.208.215" ]
+    payload['listenPorts'] = [ 443 ]
+    payload['faviconUrl'] = "https://trust.salesforce.com/static/images/logo.svg"
+    payload['configUrl'] = ""
+    payload['type'] = "salesforce_services"
+    payload['properties'] = { }
+    payload['dnsNames'] = [ "trust.salesforce.com" ]
+
     try:
-        response = requests.get(config[args.customer + "_" + args.environment]['tenant_url']+"/api/v2/entities/custom", headers=headers)
+        response = requests.post(config[args.customer + "_" + args.environment]['tenant_url']+"/api/v2/entities/custom", data=json.dumps(payload), headers=headers)
         # print("Response Code: " + str(response.status_code))
         # print("Response Body: " + response.text)
         dynatraceDeviceData = json.loads(response.text)
