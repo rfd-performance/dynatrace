@@ -1,0 +1,10 @@
+- hosts: all
+  tasks:
+  - name: Install the Dynatrace OneAgent for Windows on HHSC DR Host
+    win_package:
+      path: https://<your_tenant>/api/v1/deployment/installer/agent/windows/default/latest?Api-Token=y2kujd-YRSWypNAI_CsSI&arch=x86&flavor=default
+      product_id: '{product_id}'
+      arguments:
+        - --set-host-group=my_group
+        - --set-infra-only=false
+        - --set-app-log-content-access=true
