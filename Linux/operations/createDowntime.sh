@@ -15,6 +15,7 @@
 #
 #   - bash
 #   - curl
+#   - sed
 #   - Dynatrace API Token with Write privileges to the Configuration API v1 endpoint
 #   - Set the tenant and token value below (tenant & api_token)
 #
