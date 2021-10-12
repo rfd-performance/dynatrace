@@ -9,3 +9,6 @@ Setup a scheduled task to export the data to Dynatrace on a periodic basis.  Use
 
 ## scheduler.ps1
 This is a basic schedule that can be created from the windows command prompt using powershell.  Review the schedule after import.  There are many more options to use.
+
+## createMaintenance.ps1
+This is a powershell script that given three parameters (subject, description and time in minutes) will create a maintenance schedule in Dynatrace.   
