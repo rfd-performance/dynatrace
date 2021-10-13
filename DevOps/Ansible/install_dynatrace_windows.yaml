@@ -8,6 +8,9 @@
     
   - name: Download the Dynatrace OneAgent for Windows
     win_command: powershell -ExecutionPolicy ByPass -command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://<your_tenant>/api/v1/deployment/installer/agent/windows/default/latest?arch=x86&flavor=default' -Headers @{ 'Authorization' = 'Api-Token <your_token>' } -OutFile 'C:\temp\Dynatrace-OneAgent-Windows.exe'"
+    when: ping_out is search("pong")
 
   - name: Install the Dynatrace OneAgent for Windows
     win_command: C:\temp\Dynatrace-OneAgent-Windows.exe --set-infra-only=false --set-app-log-content-access=true --set-host-group=<your_host_group> --set-host-tag=<your_tag>
+    become: yes
+    when: ping_out is search("pong")
