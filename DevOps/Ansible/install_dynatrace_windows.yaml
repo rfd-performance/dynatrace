@@ -1,5 +1,11 @@
 - hosts: all
   tasks:
+  - name: 'Ping host to validate inventory'
+    meta: clear_host_errors
+  - ping:
+    ignore_errors: True
+    register: ping_out
+    
   - name: Download the Dynatrace OneAgent for Windows
     win_command: powershell -ExecutionPolicy ByPass -command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri 'https://<your_tenant>/api/v1/deployment/installer/agent/windows/default/latest?arch=x86&flavor=default' -Headers @{ 'Authorization' = 'Api-Token <your_token>' } -OutFile 'C:\temp\Dynatrace-OneAgent-Windows.exe'"
 
