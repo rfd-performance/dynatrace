@@ -1,0 +1,35 @@
+- hosts: 'all'
+  gather_facts: no
+  tasks:
+    - name: 'Ping host to validate inventory'
+      meta: clear_host_errors
+    - ping:
+      ignore_errors: True
+      register: ping_out
+
+    - name: 'Make sure wget installed'
+      become: yes
+      when: ping_out is search("pong")
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - wget
+      register: shell_out
+    - debug:
+       var: shell_out
+
+    - name: 'Download Dynatrace Agent to temp directory'
+      shell: 'wget -O Dynatrace-OneAgent-Linux.sh "https://<your_tenant>/api/v1/deployment/installer/agent/unix/default/latest?arch=x86&flavor=default" --header="Authorization: Api-Token <your_token>"'
+      when: ping_out is search("pong")
+      register: shell_out
+    - debug:
+       var: shell_out
+
+    - name: 'Install Dynatrace agent with elevated privileges'
+      become: yes
+      shell: '/bin/sh /tmp/Dynatrace-OneAgent-Linux.sh --set-app-log-content-access=true --set-infra-only=false'
+      when: ping_out is search("pong")
+      register: shell_out
+    - debug:
+       var: shell_out
