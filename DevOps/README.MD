@@ -11,3 +11,9 @@ This is a basic schedule that can be created from the windows command prompt usi
 
 ## createMaintenance.ps1
 This is a powershell script that given three parameters (subject, description and time in minutes) will create a maintenance schedule in Dynatrace.   
+
+## updateCustomEventState.sh
+This is a bash script that will change the state of a custom event in Dynatrace. You would either be calling to enable or disable the custom event.
+
+## ./lib/CleanCustomEventStatePayload.py
+This python script is used by updateCustomEventState.sh to cleanup the payload that is sent for update to Dynatrace.
