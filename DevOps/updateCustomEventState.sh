@@ -77,11 +77,6 @@ updateCustomEventState() {
 metricName=$(echo $1 | awk '{print toupper($0)}') # Substring of Custom Event in Dynatrace
 action=$(echo $2 | awk '{print toupper($0)}') # ENABLE | DISABLE
 
-if [ -z ${ext_root+x} ]; then
-	echo -e "Extension Root Directory not set...exiting..."
-	exit 1
-fi
-
 # Set script variables - YOU WILL SET THESE FOR YOUR ENVIRONMENT
 ext_root=~/dynatrace # this is the root of where this script is running in your environment
 metric_anomaly_url=https://hpy136.dynatrace-managed.com/e/b1bde7d9-488d-4b97-tfb4-b6a9007c508d/api/config/v1/anomalyDetection/metricEvents
