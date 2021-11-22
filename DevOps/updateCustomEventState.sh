@@ -19,11 +19,13 @@ retrieveCustomEvents() {
 		"${metric_anomaly_url}" \
 		-o ${retrieve_event_list_output_json})
 
-	echo -e "\nResponse Code: ${response_code}\n"
 	if [[ $response_code -eq 200 ]]; then
 		echo -e "Successful Metric Anomaly List Retrieval"
+		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${retrieve_event_list_output_json} | jq '.'
 	else
+		echo -e "Unsuccessful Metric Anomaly List Retrieval"
+		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${retrieve_event_list_output_json} | jq '.'
 		exit 1
 	fi
@@ -39,11 +41,13 @@ retrieveCustomEventState() {
 		"${metric_anomaly_url}/${id}" \
 		-o ${retrieve_output_json})
 
-	echo -e "\nResponse Code: ${response_code}\n"
 	if [[ $response_code -eq 200 ]]; then
 		echo -e "Successful Metric Anomaly Retrieval"
+		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${retrieve_output_json} | jq '.'
 	else
+		echo -e "Unsuccessful Metric Anomaly Retrieval"
+		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${retrieve_output_json} | jq '.'
 		exit 1
 	fi
@@ -59,10 +63,13 @@ updateCustomEventState() {
 		"${metric_anomaly_url}/${id}" \
 		-o ${update_output_json} \
 		-d @${retrieve_output_json})
-	echo -e "\nResponse Code: ${response_code}\n"
+	
 	if [[ $response_code -eq 204 ]]; then
 		echo -e "Successful Metric Anomaly Update"
+		echo -e "\nResponse Code: ${response_code}\n"
 	else
+		echo -e "Update not successful, Response code: ${response_code}"
+		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${update_output_json} | jq '.'
 		exit 1
 	fi
