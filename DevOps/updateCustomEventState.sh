@@ -20,11 +20,11 @@ retrieveCustomEvents() {
 		-o ${retrieve_event_list_output_json})
 
 	if [[ $response_code -eq 200 ]]; then
-		echo -e "Successful Metric Anomaly List Retrieval"
+		echo -e "Successful Custom Event Retrieval"
 		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${retrieve_event_list_output_json} | jq '.'
 	else
-		echo -e "Unsuccessful Metric Anomaly List Retrieval"
+		echo -e "Unsuccessful Custom Event Retrieval"
 		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${retrieve_event_list_output_json} | jq '.'
 		exit 1
@@ -42,11 +42,11 @@ retrieveCustomEventState() {
 		-o ${retrieve_output_json})
 
 	if [[ $response_code -eq 200 ]]; then
-		echo -e "Successful Metric Anomaly Retrieval"
+		echo -e "Successful Custom Event State Retrieval"
 		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${retrieve_output_json} | jq '.'
 	else
-		echo -e "Unsuccessful Metric Anomaly Retrieval"
+		echo -e "Unsuccessful Custom Event State Retrieval"
 		echo -e "\nResponse Code: ${response_code}\n"
 		cat ${retrieve_output_json} | jq '.'
 		exit 1
@@ -65,7 +65,7 @@ updateCustomEventState() {
 		-d @${retrieve_output_json})
 	
 	if [[ $response_code -eq 204 ]]; then
-		echo -e "Successful Metric Anomaly Update"
+		echo -e "Successful Custom Event Update"
 		echo -e "\nResponse Code: ${response_code}\n"
 	else
 		echo -e "Update not successful, Response code: ${response_code}"
@@ -81,7 +81,7 @@ updateCustomEventState() {
 ################################
 # Main Logic area
 ################################
-metricName=$(echo $1 | awk '{print toupper($0)}') # Substring of Custom Event in Dynatrace
+eventName=$(echo $1 | awk '{print toupper($0)}') # Substring of Custom Event in Dynatrace
 action=$(echo $2 | awk '{print toupper($0)}') # ENABLE | DISABLE
 
 # Set script variables - YOU WILL SET THESE FOR YOUR ENVIRONMENT
@@ -104,7 +104,7 @@ do
 	fi
 	name=$(cat ${retrieve_event_list_output_json} | jq ".values[${i}] .name" | tr -d '"' | awk '{print toupper($0)}')
 	echo -e "name: ${name}"
-	if [[ "$name" == *"$metricName"* ]]; then
+	if [[ "$name" == *"$eventName"* ]]; then
 		echo -e "Found our metric: $name"
 		break
 	fi
