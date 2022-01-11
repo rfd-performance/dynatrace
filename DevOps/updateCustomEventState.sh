@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Description: Script is intended to update the whether a custom metric alert is enabled
+# Description: Script is intended to update whether a custom metric alert is enabled
 # Author: Tommy Noonan
 # RFD & Associates, Inc.
 # Date: 11/19/2021
