@@ -12,3 +12,6 @@ This is a basic schedule that can be created from the windows command prompt usi
 
 ## createMaintenance.ps1
 This is a powershell script that given three parameters (subject, description and time in minutes) will create a maintenance schedule in Dynatrace.   
+
+## FilesOlderthanXmins.ps1
+This script is intended to report a metric to Dynatrace with the value of the count of files in a specific directory older than five minutes.
