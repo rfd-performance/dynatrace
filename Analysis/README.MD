@@ -23,8 +23,8 @@ columns are present and in order below.
 - Technologies used by the process group
 - Host count - The number of hosts that this process group is seen running on
 - Host Names - The host names where the process group is running as well as the mode of the agent (FULL or INFRA).
-- Service count - The number of identified services discovered automatically
-- Service Names - The list of service names discovered automatically
+- Service count - The number of identified services discovered
+- Service Names - The list of service names discovered 
 - Log files monitored - A list of log files that are configured to be monitored
 
 	Set the variables in the main function area for your environment
@@ -32,3 +32,5 @@ columns are present and in order below.
 		dynatrace_tenant_url="https://guu84124.apps.dynatrace.com"
 		ext_root="$HOME/dynatrace"
 		api_token="dt0c01.FDF6UM......."
+
+There is an example output file called "process_groups.tsv" provided.
