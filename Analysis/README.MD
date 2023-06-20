@@ -27,7 +27,7 @@ columns are present and in order below.
 - Service Names - The list of service names discovered 
 - Log files monitored - A list of log files that are configured to be monitored
 
-	Set the variables in the main function area for your environment
+	Set the variables in the main area of the shell script for your environment
 
 		dynatrace_tenant_url="https://guu84124.apps.dynatrace.com"
 		ext_root="$HOME/dynatrace"
