@@ -19,7 +19,7 @@ columns are present and in order below.
 - Process Group Display Name - name as you will see in the Dynatrace Screen and it is also a hyperlinked cell that will take you directly to the process group to make any needed changes.
 - Monitoring State - Is the process group currently configured for deep monitoring (transaction level monitoring)
 - Process Availability - Is process group availability monitoring ON or OFF. If it's off then you will never see an alert if the identified process crashes for any reason.
-- Process group instances count - Each process group can have one or more instances, typically running on different hosts.
+- Process group instance count - Each process group can have one or more instances, typically running on different hosts.
 - Technologies used by the process group
 - Host count - The number of hosts that this process group is seen running on
 - Host Names - The host names where the process group is running as well as the mode of the agent (FULL or INFRA).
